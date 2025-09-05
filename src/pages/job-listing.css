@@ -1,0 +1,10 @@
+.gradient {
+  background-image: linear-gradient(to bottom right, #6b7280, #e5e7eb, #ffffff);
+}
+
+.gradient-title {
+  background-image: linear-gradient(to bottom right, #6b7280, #e5e7eb, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
