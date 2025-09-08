@@ -11,17 +11,19 @@ const MyJobs = () => {
   }
 
   return (
-    <div>
-      <h1 className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8">
+    <div className="px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+      <h1 className="gradient-title font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center pb-4 sm:pb-6 md:pb-8 px-2">
         {user?.unsafeMetadata?.role === "candidate"
           ? "My Applications"
           : "My Jobs"}
       </h1>
-      {user?.unsafeMetadata?.role === "candidate" ? (
-        <CreatedApplications />
-      ) : (
-        <CreatedJobs />
-      )}
+      <div className="w-full">
+        {user?.unsafeMetadata?.role === "candidate" ? (
+          <CreatedApplications />
+        ) : (
+          <CreatedJobs />
+        )}
+      </div>
     </div>
   );
 };

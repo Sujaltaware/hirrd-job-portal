@@ -18,85 +18,109 @@ import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
-    <main className="flex flex-col gap-10 sm:gap-20 py-10 sm:py-20" >
-      <section className="text-center ">
-        <h1 className="flex flex-col items-center justify-center gradient-title font-extrabold text-4xl sm:text-6xl lg:text-8xl tracking-tighter py-4">
-          Find Your Dream Job
-          <span className="flex items-center gap-2 sm:gap-6">
+    <main className="flex flex-col gap-8 sm:gap-12 md:gap-16 lg:gap-20 py-6 sm:py-10 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="text-center space-y-4 sm:space-y-6 md:space-y-8">
+        <h1 className="flex flex-col items-center justify-center gradient-title font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl tracking-tighter leading-tight">
+          <span className="mb-2 sm:mb-4">Find Your Dream Job</span>
+          <span className="flex items-center gap-2 sm:gap-4 md:gap-6 flex-wrap justify-center">
             and get
             <img
               src="/logo.png"
-              className="h-14 sm:h-24 lg:h-32"
+              className="h-10 sm:h-14 md:h-20 lg:h-24 xl:h-32 object-contain"
               alt="Hirrd Logo"
             />
           </span>
         </h1>
-        <p className="text-gray-300 sm:mt-4 text-xs sm:text-xl">
+        <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto px-4">
           Explore thousands of job listings or find the perfect candidate
         </p>
       </section>
-      <div className="flex gap-6 justify-center">
-        <Link to={"/jobs"}>
-          <Button variant="blue" size="xl">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
+        <Link to={"/jobs"} className="w-full sm:w-auto">
+          <Button variant="blue" size="xl" className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-2 sm:py-3">
             Find Jobs
           </Button>
         </Link>
-        <Link to={"/post-job"}>
-          <Button variant="destructive" size="xl">
+        <Link to={"/post-job"} className="w-full sm:w-auto">
+          <Button variant="destructive" size="xl" className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-2 sm:py-3">
             Post a Job
           </Button>
         </Link>
       </div>
-      <Carousel
-        plugins={[
-          Autoplay({
-            delay: 2000,
-          }),
-        ]}
-        className="w-full py-10"
-      >
-        <CarouselContent className="flex gap-5 sm:gap-20 items-center">
-          {companies.map(({ name, id, path }) => (
-            <CarouselItem key={id} className="basis-1/3 lg:basis-1/6 ">
-              <img
-                src={path}
-                alt={name}
-                className="h-9 sm:h-14 object-contain"
-              />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
-
-      <img src="/banner.jpeg" className="w-full" />
-
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-        <Card className= 'text-white bg-gray-900'  >
-          <CardHeader>
-            <CardTitle className="font-bold">For Job Seekers</CardTitle>
+      <div className="w-full overflow-hidden">
+        <Carousel
+          plugins={[
+            Autoplay({
+              delay: 2000,
+            }),
+          ]}
+          className="w-full py-6 sm:py-8 md:py-10"
+        >
+          <CarouselContent className="flex gap-4 sm:gap-8 md:gap-12 lg:gap-20 items-center -ml-4">
+            {companies.map(({ name, id, path }) => (
+              <CarouselItem key={id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6 pl-4 flex justify-center">
+                <img
+                  src={path}
+                  alt={name}
+                  className="h-8 sm:h-10 md:h-12 lg:h-14 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
+      <div className="w-full relative overflow-hidden rounded-lg sm:rounded-xl shadow-2xl">
+        <img 
+          src="/banner.jpeg" 
+          alt="Job Portal Banner"
+          className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+        <Card className="text-white bg-gray-900 border-gray-800 hover:bg-gray-800 transition-colors duration-300">
+          <CardHeader className="pb-4">
+            <CardTitle className="font-bold text-lg sm:text-xl md:text-2xl text-blue-400">
+              For Job Seekers
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            Search and apply for jobs, track applications, and more.
+          <CardContent className="text-sm sm:text-base leading-relaxed">
+            Search and apply for jobs, track applications, and more. Find your perfect career opportunity with our advanced search filters and personalized recommendations.
           </CardContent>
         </Card>
-        <Card className='text-white bg-gray-900'>
-          <CardHeader>
-            <CardTitle className="font-bold">For Employers</CardTitle>
+        
+        <Card className="text-white bg-gray-900 border-gray-800 hover:bg-gray-800 transition-colors duration-300">
+          <CardHeader className="pb-4">
+            <CardTitle className="font-bold text-lg sm:text-xl md:text-2xl text-red-400">
+              For Employers
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            Post jobs, manage applications, and find the best candidates.
+          <CardContent className="text-sm sm:text-base leading-relaxed">
+            Post jobs, manage applications, and find the best candidates. Streamline your hiring process with our comprehensive recruitment tools.
           </CardContent>
         </Card>
       </section>
-
-      <Accordion type="multiple" className="w-full text-white">
-        {faqs.map((faq, index) => (
-          <AccordionItem key={index} value={`item-${index + 1}`}>
-            <AccordionTrigger>{faq.question}</AccordionTrigger>
-            <AccordionContent>{faq.answer}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+      <section className="w-full space-y-4 sm:space-y-6">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-white mb-6 sm:mb-8">
+          Frequently Asked Questions
+        </h2>
+        <Accordion type="multiple" className="w-full text-white space-y-2">
+          {faqs.map((faq, index) => (
+            <AccordionItem 
+              key={index} 
+              value={`item-${index + 1}`}
+              className="border-gray-700 bg-gray-900/50 rounded-lg px-4 sm:px-6"
+            >
+              <AccordionTrigger className="text-left text-sm sm:text-base md:text-lg font-medium hover:text-blue-400 transition-colors duration-200 py-4 sm:py-6">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-sm sm:text-base text-gray-300 leading-relaxed pb-4 sm:pb-6">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
     </main>
   );
 };

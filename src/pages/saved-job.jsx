@@ -25,26 +25,30 @@ const SavedJobs = () => {
   }
 
   return (
-    <div>
-      <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8">
+    <div className="px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+      <h1 className="gradient-title font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center pb-4 sm:pb-6 md:pb-8 px-2">
         Saved Jobs
       </h1>
 
       {loadingSavedJobs === false && (
-        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-4 sm:mt-6 md:mt-8">
           {savedJobs?.length ? (
-            savedJobs?.map((saved) => {
-              return (
-                <JobCard
-                  key={saved.id}
-                  job={saved?.job}
-                  onJobAction={fnSavedJobs}
-                  savedInit={true}
-                />
-              );
-            })
+            <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+              {savedJobs?.map((saved) => {
+                return (
+                  <JobCard
+                    key={saved.id}
+                    job={saved?.job}
+                    onJobAction={fnSavedJobs}
+                    savedInit={true}
+                  />
+                );
+              })}
+            </div>
           ) : (
-            <div>No Saved Jobs 👀</div>
+            <div className="text-white text-center py-8 text-base sm:text-lg">
+              No Saved Jobs 👀
+            </div>
           )}
         </div>
       )}
